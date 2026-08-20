@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Activity · SwapLoop</title>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+  <header class="topbar" data-testid="app-header">
+    <a href="/stations.html" class="brand" data-testid="brand-link">SwapLoop</a>
+    <span class="user-chip" data-testid="user-chip" hidden></span>
+  </header>
+
+  <main data-testid="activity-page">
+    <h1 data-testid="activity-title">Activity</h1>
+    <p class="lede" id="activity-lede">Active hold, live charging, and recent receipts.</p>
+    <hr class="rule" />
+    <p class="error" id="activity-error" data-testid="activity-error" role="alert"></p>
+
+    <div class="box" id="activity-active" data-testid="activity-active" hidden>
+      <h2>Active service</h2>
+      <div data-testid="active-service">
+        <div class="for-you-row">
+          <span class="icon-sq" aria-hidden="true"></span>
+          <div>
+            <span class="badge soft" data-testid="active-status" id="active-status">—</span>
+            <strong>
+              <span data-testid="active-type" id="active-type"></span>
+              ·
+              <span data-testid="active-station" id="active-station"></span>
+            </strong>
+            <div class="hint" id="active-unit" data-testid="active-unit"></div>
+          </div>
+        </div>
+
+        <div class="countdown-box" data-testid="active-countdown" id="active-countdown" hidden>
+          <div class="hint">Hold expires in</div>
+          <div class="big" id="countdown-secs">—</div>
+          <div class="mono" id="countdown-iso"></div>
+        </div>
+
+        <div data-testid="charging-live" id="charging-live" hidden>
+          <p class="hint" id="charging-poll-hint"></p>
+          <div class="metrics">
+            <div class="metric"><span class="lab">SOC</span><span class="val" id="m-soc">—</span></div>
+            <div class="metric"><span class="lab">POWER</span><span class="val" id="m-power">—</span></div>
+            <div class="metric"><span class="lab">TEMP</span><span class="val" id="m-temp">—</span></div>
+            <div class="metric"><span class="lab">ENDS</span><span class="val" id="m-ends">—</span></div>
+          </div>
+          <p class="mono" id="m-ends-iso"></p>
+          <p class="hint">Cancel is not offered after start. Wait until the session is ready for collection.</p>
+        </div>
+
+        <div class="btn-row">
+          <button class="primary" type="button" data-testid="action-start" id="action-start" hidden>Start</button>
+          <button class="primary" type="button" data-testid="action-confirm" id="action-confirm" hidden>Confirm swap</button>
+          <button class="primary" type="button" data-testid="action-collect" id="action-collect" hidden>Collect bike</button>
+          <button class="secondary" type="button" data-testid="action-cancel" id="action-cancel" hidden>Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="empty" id="activity-empty" data-testid="activity-empty" hidden>
+      No active service. <a href="/stations.html" data-testid="activity-empty-link">Find stations</a>
+    </p>
+
+    <h2>Recent</h2>
+    <div class="stack" id="activity-recent" data-testid="activity-recent"></div>
+    <template id="recent-template">
+      <div class="box" data-testid="recent-service">
+        <strong><span data-field="type"></span> · <span data-field="station"></span></strong>
+        <p class="hint" style="margin:0.35rem 0 0;">
+          <span data-field="status" data-testid="recent-status"></span>
+          <span data-field="meta"></span>
+          <span data-field="price-wrap" hidden> · <span data-field="price" data-testid="recent-price"></span></span>
+        </p>
+      </div>
+    </template>
+  </main>
+
+  <nav class="bottom-nav" data-testid="bottom-nav">
+    <a href="/stations.html" data-testid="nav-stations"><span class="ico" aria-hidden="true"></span>Stations</a>
+    <a href="/scan.html" data-testid="nav-scan"><span class="ico" aria-hidden="true"></span>Scan</a>
+    <a href="/activity.html" data-testid="nav-activity" aria-current="page"><span class="ico" aria-hidden="true"></span>Activity</a>
+    <a href="/profile.html" data-testid="nav-profile"><span class="ico round" aria-hidden="true"></span>Profile</a>
+  </nav>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/activity.js"></script>
+</body>
+</html>

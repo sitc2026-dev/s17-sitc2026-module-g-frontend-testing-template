@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scan · SwapLoop</title>
+  <link rel="stylesheet" href="/css/app.css" />
+  <script src="/vendor/swaploop-qr-emulator.js"></script>
+</head>
+<body>
+  <header class="topbar" data-testid="app-header">
+    <a href="/stations.html" class="brand" data-testid="brand-link">SwapLoop</a>
+    <span class="user-chip" data-testid="user-chip" hidden></span>
+  </header>
+
+  <main data-testid="scan-page">
+    <h1 data-testid="scan-title">Scan</h1>
+    <p class="lede">Station poster QR only. No device camera. The emulator talks to Station Service; the SPA then loads the hub from the main backend.</p>
+    <hr class="rule" />
+    <p class="error" id="scan-error" data-testid="scan-error" role="alert"></p>
+
+    <div class="box qr-box" data-testid="qr-emulator">
+      <h2 data-testid="qr-emulator-label">QR emulator</h2>
+      <swaploop-qr-emulator id="qr-wc" data-testid="qr-wc"></swaploop-qr-emulator>
+      <p class="hint">Expected payload: https://app.swaploop.test/stations/{stationId} or a bare station-… id.</p>
+      <div class="btn-row">
+        <button type="button" class="primary" data-testid="qr-emit-btn" id="qr-scan-btn">Scan station poster</button>
+      </div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav" data-testid="bottom-nav">
+    <a href="/stations.html" data-testid="nav-stations"><span class="ico" aria-hidden="true"></span>Stations</a>
+    <a href="/scan.html" data-testid="nav-scan" aria-current="page"><span class="ico" aria-hidden="true"></span>Scan</a>
+    <a href="/activity.html" data-testid="nav-activity"><span class="ico" aria-hidden="true"></span>Activity</a>
+    <a href="/profile.html" data-testid="nav-profile"><span class="ico round" aria-hidden="true"></span>Profile</a>
+  </nav>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/scan.js"></script>
+</body>
+</html>

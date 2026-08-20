@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QR tester · SwapLoop</title>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+  <header class="topbar auth-hero">
+    <span class="brand">SwapLoop</span>
+    <p class="page-sub">Station Service QR tester</p>
+  </header>
+  <main>
+    <h1>QR poster</h1>
+    <p class="lede">Sets the payload returned by <code>GET /api/qr/current</code> for the scan emulator.</p>
+    <hr class="rule" />
+    <div class="box">
+      <label for="payload">Payload</label>
+      <input id="payload" type="text" value="https://app.swaploop.test/stations/station-001" />
+      <p class="hint">Examples: full deep link, or bare <code>station-001</code>.</p>
+      <div class="btn-row">
+        <button class="primary" type="button" id="save">Set active poster</button>
+      </div>
+      <p class="error" id="msg" role="alert"></p>
+      <p class="footer-links"><a href="/scan.html">Back to Scan</a></p>
+    </div>
+  </main>
+  <script>
+    const msg = document.getElementById('msg')
+    fetch('/api/qr/current')
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.payload) document.getElementById('payload').value = d.payload
+      })
+      .catch(() => {})
+    document.getElementById('save').addEventListener('click', async () => {
+      msg.textContent = ''
+      const payload = document.getElementById('payload').value.trim()
+      const res = await fetch('/api/qr/current', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ payload }),
+      })
+      const body = await res.json()
+      msg.textContent = res.ok ? `Active: ${body.payload}` : body.message || 'Failed'
+    })
+  </script>
+</body>
+</html>

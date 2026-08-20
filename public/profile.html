@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile · SwapLoop</title>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+  <header class="topbar" data-testid="app-header">
+    <a href="/stations.html" class="brand" data-testid="brand-link">SwapLoop</a>
+    <span class="user-chip" data-testid="user-chip" hidden></span>
+  </header>
+
+  <main data-testid="profile-page">
+    <h1 data-testid="profile-title">Profile</h1>
+    <p class="lede">Signed-in rider. Voltage class is derived by the backend. currentBatteryId is shown while you hold a pack.</p>
+    <hr class="rule" />
+
+    <div class="box">
+      <h2>Account</h2>
+      <dl class="kv"><dt>Display name</dt><dd data-testid="profile-display-name" id="profile-display-name"></dd></dl>
+      <dl class="kv"><dt>Email</dt><dd data-testid="profile-email" id="profile-email"></dd></dl>
+      <dl class="kv"><dt>Role</dt><dd data-testid="profile-role" id="profile-role"></dd></dl>
+      <dl class="kv"><dt>Status</dt><dd><span class="badge" data-testid="profile-status" id="profile-status"></span></dd></dl>
+    </div>
+
+    <div class="box">
+      <h2>Vehicle</h2>
+      <dl class="kv"><dt>Battery mode</dt><dd data-testid="profile-battery-mode" id="profile-battery-mode"></dd></dl>
+      <dl class="kv" id="row-battery-type"><dt>Battery type</dt><dd data-testid="profile-battery-type" id="profile-battery-type"></dd></dl>
+      <dl class="kv" id="row-connector" hidden><dt>Connector</dt><dd data-testid="profile-connector-type" id="profile-connector-type"></dd></dl>
+      <dl class="kv"><dt>Voltage class</dt><dd data-testid="profile-voltage-class" id="profile-voltage-class"></dd></dl>
+      <dl class="kv"><dt>Current pack</dt><dd data-testid="profile-current-battery" id="profile-current-battery"></dd></dl>
+    </div>
+
+    <div class="btn-row">
+      <button class="primary" type="button" data-testid="profile-edit" id="profile-edit">Edit profile</button>
+      <button class="ghost" type="button" data-testid="logout-btn" id="logout-btn">Sign out</button>
+    </div>
+    <p class="footer-links hint">Integrated rider view: <a href="#" id="as-chen" data-testid="profile-as-chen">Chen Hao</a></p>
+
+    <div class="box" id="edit-box" hidden data-testid="profile-edit-box">
+      <h2>Edit</h2>
+      <label for="edit-name">Display name</label>
+      <input id="edit-name" data-testid="edit-display-name" type="text" />
+      <p class="error" id="edit-error" data-testid="edit-error" role="alert"></p>
+      <div class="btn-row">
+        <button class="primary" type="button" id="edit-save" data-testid="edit-save">Save</button>
+        <button class="secondary" type="button" id="edit-cancel" data-testid="edit-cancel">Cancel</button>
+      </div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav" data-testid="bottom-nav">
+    <a href="/stations.html" data-testid="nav-stations"><span class="ico" aria-hidden="true"></span>Stations</a>
+    <a href="/scan.html" data-testid="nav-scan"><span class="ico" aria-hidden="true"></span>Scan</a>
+    <a href="/activity.html" data-testid="nav-activity"><span class="ico" aria-hidden="true"></span>Activity</a>
+    <a href="/profile.html" data-testid="nav-profile" aria-current="page"><span class="ico round" aria-hidden="true"></span>Profile</a>
+  </nav>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/profile.js"></script>
+</body>
+</html>

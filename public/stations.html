@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stations · SwapLoop</title>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+  <header class="topbar" data-testid="app-header">
+    <a href="/stations.html" class="brand" data-testid="brand-link">SwapLoop</a>
+    <span class="user-chip" data-testid="user-chip" hidden></span>
+  </header>
+
+  <main data-testid="stations-page">
+    <h1 data-testid="stations-title">Stations</h1>
+    <p class="lede">Find a swap cabinet or charging bay nearby.</p>
+    <hr class="rule" />
+    <div class="filters" data-testid="station-filters">
+      <a href="/stations.html" data-testid="filter-all" data-filter="ALL">All</a>
+      <a href="/stations.html?type=SWAP" data-testid="filter-swap" data-filter="SWAP">SWAP</a>
+      <a href="/stations.html?type=CHARGING" data-testid="filter-charging" data-filter="CHARGING">CHARGING</a>
+      <a href="/stations.html?type=HYBRID" data-testid="filter-hybrid" data-filter="HYBRID">HYBRID</a>
+    </div>
+    <p class="error" id="stations-error" data-testid="stations-error" role="alert"></p>
+    <div class="stack" id="station-list" data-testid="station-list"></div>
+    <p class="empty" id="stations-empty" data-testid="stations-empty" hidden>No stations match.</p>
+    <template id="station-card-template">
+      <a class="station-card" data-testid="station-card">
+        <strong data-field="name" data-testid="station-name"></strong>
+        <dl class="kv">
+          <dt>Type</dt>
+          <dd data-field="type" data-testid="station-type"></dd>
+        </dl>
+        <dl class="kv">
+          <dt>Status</dt>
+          <dd data-field="status" data-testid="station-status"></dd>
+        </dl>
+        <div class="badge soft" data-field="availability" data-testid="station-availability"></div>
+      </a>
+    </template>
+  </main>
+
+  <nav class="bottom-nav" data-testid="bottom-nav" data-auth="required">
+    <a href="/stations.html" data-testid="nav-stations" aria-current="page"><span class="ico" aria-hidden="true"></span>Stations</a>
+    <a href="/scan.html" data-testid="nav-scan"><span class="ico" aria-hidden="true"></span>Scan</a>
+    <a href="/activity.html" data-testid="nav-activity"><span class="ico" aria-hidden="true"></span>Activity</a>
+    <a href="/profile.html" data-testid="nav-profile"><span class="ico round" aria-hidden="true"></span>Profile</a>
+  </nav>
+  <p class="footer-links" style="padding:0 1rem 1rem;" data-auth="guest">
+    <a href="/login.html" data-testid="nav-login">Sign in</a> to reserve and scan.
+  </p>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/stations.js"></script>
+</body>
+</html>

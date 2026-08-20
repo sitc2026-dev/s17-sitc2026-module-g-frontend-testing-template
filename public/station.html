@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Station · SwapLoop</title>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+  <header class="topbar" data-testid="app-header">
+    <a href="/stations.html" class="brand" data-testid="brand-link">SwapLoop</a>
+    <span class="user-chip" data-testid="user-chip" hidden></span>
+  </header>
+
+  <main data-testid="station-detail-page">
+    <p class="footer-links" style="margin-top:0;"><a href="/stations.html" data-testid="back-stations">Back to stations</a></p>
+    <h1 data-testid="station-detail-title"><span data-testid="station-detail-name" id="station-name">Loading…</span></h1>
+    <div class="station-title-row">
+      <span class="badge" data-testid="station-detail-status" id="station-status">—</span>
+      <span><span data-testid="station-detail-type" id="station-type"></span> SwapLoop Station</span>
+    </div>
+    <hr class="rule" />
+    <p class="error" id="station-error" data-testid="station-error" role="alert"></p>
+
+    <div id="station-body" data-testid="station-body">
+      <div class="box">
+        <h2>Station</h2>
+        <dl class="kv"><dt>Address</dt><dd data-testid="station-detail-address" id="station-address">—</dd></dl>
+        <dl class="kv"><dt>Hours</dt><dd data-testid="station-detail-hours" id="station-hours">—</dd></dl>
+        <dl class="kv"><dt>Services</dt><dd id="station-services">—</dd></dl>
+        <dl class="kv"><dt>Battery types</dt><dd id="station-battery-types">—</dd></dl>
+        <dl class="kv"><dt>Connectors</dt><dd id="station-connectors">—</dd></dl>
+        <dl class="kv"><dt>Voltage</dt><dd id="station-voltage">—</dd></dl>
+      </div>
+
+      <div class="box">
+        <h2>For you</h2>
+        <div class="for-you-row">
+          <span class="icon-sq" aria-hidden="true"></span>
+          <div>
+            <span class="badge" id="for-you-badge" data-testid="station-ready-badge">—</span>
+            <span data-testid="station-detail-availability" id="station-availability"></span>
+          </div>
+        </div>
+        <p class="lede" id="for-you-copy"></p>
+        <p class="hint" id="reserve-hint"></p>
+        <div class="btn-row">
+          <button class="primary" type="button" id="reserve-btn" data-testid="reserve-btn" disabled>Reserve</button>
+        </div>
+        <p class="hint">Hold length comes from the API expiresAt (10 seconds in this competition).</p>
+      </div>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" data-testid="toast" hidden></div>
+
+  <nav class="bottom-nav" data-testid="bottom-nav" data-auth="required">
+    <a href="/stations.html" data-testid="nav-stations" aria-current="page"><span class="ico" aria-hidden="true"></span>Stations</a>
+    <a href="/scan.html" data-testid="nav-scan"><span class="ico" aria-hidden="true"></span>Scan</a>
+    <a href="/activity.html" data-testid="nav-activity"><span class="ico" aria-hidden="true"></span>Activity</a>
+    <a href="/profile.html" data-testid="nav-profile"><span class="ico round" aria-hidden="true"></span>Profile</a>
+  </nav>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/station.js"></script>
+</body>
+</html>

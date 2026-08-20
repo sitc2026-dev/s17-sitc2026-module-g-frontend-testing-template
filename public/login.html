@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign in · SwapLoop</title>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+  <header class="topbar auth-hero" data-testid="app-header">
+    <a href="/login.html" class="brand" data-testid="brand-link">SwapLoop</a>
+    <p class="page-sub">Shanghai community e-bike battery swap</p>
+  </header>
+
+  <main data-testid="login-page">
+    <h1 data-testid="login-title">Sign in</h1>
+    <p class="lede">Riders sign in with email and password. Station list, Scan, and Activity stay behind this screen.</p>
+    <hr class="rule" />
+
+    <div class="box">
+      <form id="login-form" data-testid="login-form" novalidate>
+        <label for="login-email">Email</label>
+        <input id="login-email" data-testid="login-email" type="email" autocomplete="username"
+          value="lin.xiaoyu@swaploop.test" />
+        <label for="login-password">Password</label>
+        <input id="login-password" data-testid="login-password" type="password" autocomplete="current-password" />
+        <p class="error" id="login-error" data-testid="login-error" role="alert"></p>
+        <hr class="rule" />
+        <button class="primary" type="submit" data-testid="login-submit">Sign in</button>
+      </form>
+    </div>
+
+    <p class="footer-links">New rider? <a href="/register.html" data-testid="goto-register">Create an account</a></p>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/login.js"></script>
+</body>
+</html>

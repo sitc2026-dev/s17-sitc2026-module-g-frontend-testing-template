@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Receipt · SwapLoop</title>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+  <header class="topbar" data-testid="app-header">
+    <a href="/stations.html" class="brand" data-testid="brand-link">SwapLoop</a>
+    <span class="user-chip" data-testid="user-chip" hidden></span>
+  </header>
+
+  <main data-testid="receipt-page">
+    <p class="footer-links" style="margin-top:0;"><a href="/activity.html" data-testid="back-activity">Back to Activity</a></p>
+    <h1 data-testid="receipt-title">Receipt</h1>
+    <p class="lede">Pay-as-you-go from the API. Amount is not calculated in the SPA.</p>
+    <hr class="rule" />
+
+    <div class="status-banner" data-testid="receipt-banner">
+      <span class="icon-sq" aria-hidden="true"></span>
+      <span id="receipt-banner-text">Service complete. This service is now in Recent.</span>
+    </div>
+
+    <div class="box" data-testid="activity-receipt">
+      <h2>Payment</h2>
+      <p class="amount" data-testid="receipt-amount" id="receipt-amount">—</p>
+      <dl class="kv"><dt>Price code</dt><dd data-testid="receipt-code" id="receipt-code">—</dd></dl>
+      <dl class="kv"><dt>Service</dt><dd id="receipt-service">—</dd></dl>
+      <dl class="kv"><dt>Station</dt><dd id="receipt-station">—</dd></dl>
+      <dl class="kv"><dt>Confirmed</dt><dd id="receipt-when">—</dd></dl>
+      <div class="btn-row">
+        <a class="primary" href="/stations.html" data-testid="receipt-find-station">Find another station</a>
+      </div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav" data-testid="bottom-nav">
+    <a href="/stations.html" data-testid="nav-stations"><span class="ico" aria-hidden="true"></span>Stations</a>
+    <a href="/scan.html" data-testid="nav-scan"><span class="ico" aria-hidden="true"></span>Scan</a>
+    <a href="/activity.html" data-testid="nav-activity" aria-current="page"><span class="ico" aria-hidden="true"></span>Activity</a>
+    <a href="/profile.html" data-testid="nav-profile"><span class="ico round" aria-hidden="true"></span>Profile</a>
+  </nav>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/receipt.js"></script>
+</body>
+</html>

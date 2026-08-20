@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register · SwapLoop</title>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+  <header class="topbar auth-hero">
+    <a href="/login.html" class="brand" data-testid="brand-link">SwapLoop</a>
+    <p class="page-sub" id="reg-kicker">Create a rider account</p>
+  </header>
+
+  <main data-testid="register-page">
+    <h1 data-testid="register-title" id="reg-heading">Register</h1>
+    <p class="lede" id="reg-lede">Step 1 of 2. Vehicle fields change with battery mode. Voltage class is derived later — do not send it here.</p>
+    <hr class="rule" />
+
+    <div class="steps" data-testid="register-steps">
+      <div class="step current" id="step-ind-1" data-testid="register-step-ind-1">
+        <strong id="step-ind-1-label">Step 1 · current</strong>
+        Vehicle profile
+      </div>
+      <div class="step" id="step-ind-2" data-testid="register-step-ind-2">
+        <strong id="step-ind-2-label">Step 2</strong>
+        Alipay link
+      </div>
+    </div>
+
+    <section id="reg-step1" data-testid="register-step1">
+      <div class="box">
+        <label for="reg-email">Email</label>
+        <input id="reg-email" data-testid="register-email" type="email" placeholder="lin.xiaoyu@swaploop.test" />
+        <label for="reg-password">Password</label>
+        <input id="reg-password" data-testid="register-password" type="password" />
+        <label for="reg-name">Display name</label>
+        <input id="reg-name" data-testid="register-display-name" type="text" placeholder="Lin Xiaoyu" />
+
+        <fieldset class="fieldset">
+          <legend>Battery mode</legend>
+          <div class="mode-toggle" data-testid="register-battery-mode">
+            <button type="button" class="is-on" data-mode="SWAPPABLE" data-testid="register-mode-swappable">SWAPPABLE</button>
+            <button type="button" data-mode="INTEGRATED" data-testid="register-mode-integrated">INTEGRATED</button>
+          </div>
+          <input type="hidden" id="reg-mode" value="SWAPPABLE" />
+          <p class="hint">Swappable packs use battery type. Integrated bikes use connector type.</p>
+        </fieldset>
+
+        <div id="reg-swappable" data-testid="register-swappable-fields">
+          <label for="reg-battery-type">Battery type</label>
+          <select id="reg-battery-type" data-testid="register-battery-type">
+            <option value="SL-48">SL-48 (48V)</option>
+            <option value="SL-60">SL-60 (60V)</option>
+          </select>
+          <p class="hint">Required for SWAPPABLE. Connector type is omitted.</p>
+        </div>
+        <div id="reg-integrated" data-testid="register-integrated-fields" hidden>
+          <label for="reg-connector-type">Connector type</label>
+          <select id="reg-connector-type" data-testid="register-connector-type">
+            <option value="GB-AC-48">GB-AC-48</option>
+            <option value="GB-AC-60">GB-AC-60</option>
+          </select>
+          <p class="hint">Required for INTEGRATED. Battery type is omitted.</p>
+        </div>
+
+        <p class="error" id="reg-error" data-testid="register-error" role="alert"></p>
+        <hr class="rule" />
+        <div class="btn-row">
+          <button class="primary" type="button" id="reg-next" data-testid="register-next">Continue to Alipay</button>
+          <a class="ghost" href="/login.html" data-testid="register-cancel">Cancel</a>
+        </div>
+      </div>
+      <p class="footer-links">Already registered? <a href="/login.html" data-testid="goto-login">Sign in</a></p>
+    </section>
+
+    <section id="reg-step2" data-testid="register-step2" hidden>
+      <div class="status-banner" data-testid="alipay-status-banner">
+        <span class="icon-sq" aria-hidden="true"></span>
+        <span id="alipay-status" data-testid="alipay-status">Linking Alipay… this usually takes a few seconds.</span>
+      </div>
+      <div class="box qr-box" data-testid="alipay-sim">
+        <h2>Mock Alipay QR</h2>
+        <div class="qr-placeholder alipay-qr" data-testid="alipay-qr-placeholder">Alipay linking QR</div>
+        <p class="hint">Scan is simulated. Create account stays disabled until the link succeeds.</p>
+        <div class="btn-row">
+          <button class="primary" type="button" id="reg-create" data-testid="register-create" disabled>Create account</button>
+        </div>
+      </div>
+      <p class="footer-links"><a href="#" id="reg-back" data-testid="register-back">Back to vehicle profile</a></p>
+    </section>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/register.js"></script>
+</body>
+</html>

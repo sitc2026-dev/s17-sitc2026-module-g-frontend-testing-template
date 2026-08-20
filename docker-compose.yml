@@ -1,0 +1,31 @@
+services:
+  web:
+    build: .
+    ports:
+      - "80:3000"
+    volumes:
+      # Live demo: edit pages/server on host without rebuild
+      - ./public:/app/public:ro
+      - ./server.js:/app/server.js:ro
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/api/health').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  cypress:
+    image: cypress/included:15.10.0
+    depends_on:
+      web:
+        condition: service_healthy
+    working_dir: /e2e
+    environment:
+      CYPRESS_baseUrl: http://web:3000
+    volumes:
+      - .:/e2e
